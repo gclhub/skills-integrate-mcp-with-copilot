@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>`
             : `<p><em>No participants yet</em></p>`;
 
+        const registerButton = `<button class="register-btn" data-activity="${name}">Register Student</button>`;
+
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
@@ -45,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="participants-container">
             ${participantsHTML}
           </div>
+          ${registerButton}
         `;
 
         activitiesList.appendChild(activityCard);
@@ -59,6 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
       // Add event listeners to delete buttons
       document.querySelectorAll(".delete-btn").forEach((button) => {
         button.addEventListener("click", handleUnregister);
+      });
+
+      // Add event listeners to register buttons
+      document.querySelectorAll(".register-btn").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const activity = event.target.getAttribute("data-activity");
+          // Trigger registration logic here
+        });
       });
     } catch (error) {
       activitiesList.innerHTML =
